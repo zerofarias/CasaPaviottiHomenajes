@@ -11,10 +11,12 @@ $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
 
 switch($opcion){
     case 1:
-        $consulta = "SELECT *   FROM extintosH 
-                            WHERE  curdate() BETWEEN STR_TO_DATE(substring(REPLACE(fechafal,'/',','), locate(' ', fechafal))  ,'%d,%m,%Y') AND 
-                                                        STR_TO_DATE(substring(REPLACE(fechasep,'/',','), locate(' ', fechasep))  ,'%d,%m,%Y')	
-                            ORDER BY COD_EXTINTO";
+        $consulta = "SELECT *   FROM extintos
+                    WHERE  (sala LIKE 'Sala DALI%' or sala='Sala VAN GOGH'   or sala='Sala PICASSO') AND
+                        curdate() BETWEEN STR_TO_DATE(substring(REPLACE(fechafal,'/',','), locate(' ', fechafal))  ,'%d,%m,%Y') 
+                    AND 
+                        STR_TO_DATE(substring(REPLACE(fechasep,'/',','), locate(' ', fechasep))  ,'%d,%m,%Y')	
+                    ORDER BY COD_EXTINTO";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();        
         $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
