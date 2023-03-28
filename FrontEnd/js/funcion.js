@@ -15,7 +15,7 @@ $(document).ready(function () {
                 escribirHTML(inhumados,num)
                 
               }    
-          },180000);
+          },9000);
           ///3Min Son 180000
           
           escribirHTML(inhumados,0)
@@ -47,8 +47,13 @@ $(document).ready(function () {
         const body = document.querySelector("body");
 
         let codigoExtinto = dato[num].COD_EXTINTO;
+
+        generarQR(codigoExtinto+'99')
         //cargarMsj(data,codigoExtinto)
-       return codigoExtinto;
+        return codigoExtinto;
+
+
+        
 
     }
   
@@ -68,6 +73,13 @@ $(document).ready(function () {
       });
     }
 
+    function generarQR(id) {
+        const contenedorQR = document.getElementById('contenedorQR');
+        contenedorQR.innerHTML= '';
+        const QR = new QRCode(contenedorQR,'https://paviotti.com.ar/CasaPaviottiTV/envio-condolencias/index.php?condolencia='+id);
+    }
+
+    
 
     ///function cargarMsj(data,codigoExtinto) {
     ///      let fallecido = JSON.parse(data);   
