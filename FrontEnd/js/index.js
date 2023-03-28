@@ -1,11 +1,3 @@
-const iconConfig = document.querySelector('.iconConf');
-const divEstilos = document.querySelector('.contenedor__estilos');
-// const estilos = document.querySelector('#estilos');
-// const estilo1 = document.querySelector('#estilo1');
-// const estilo2 = document.querySelector('#estilo2');
-// const estilo3 = document.querySelector('#estilo3');
-// const estilo4 = document.querySelector('#estilo4');
-// const estilo5 = document.querySelector('#estilo5');
 const fImagen = document.querySelector('[data-imgFallecido]');
 const fNombre = document.querySelector('[data-nombreFallecido]');
 const fInfo = document.querySelector('[data-infoFallecido]');
@@ -53,34 +45,5 @@ const nombreVanGogh = document.querySelector('[data-nombreFallecidoVanGogh]');
 //     infoExtra.style.color = 'var(--col-black)';
 //     fraseHomenaje.style.color = 'var(--col-black)';
 // })
-// estilo2.addEventListener('mouseover', () => {
-//     body.style.backgroundImage = "url('/FrontEnd/img/img2.jpg')";
-//     fNombre.style.color = 'var(--col-white)';
-//     fInfo.style.color = 'var(--col-white)';
-//     infoExtra.style.color = 'var(--col-white)';
-//     fraseHomenaje.style.color = 'var(--col-white)';
-//     fImagen.style.border = '5px solid var(--first-col)';
-//     contenedorInfoExtra.style.border = '2px solid var(--first-col)';
-//     fNombre.style.textShadow = '2px 2px 5px var(--second-col)';
-// })
-// estilo3.addEventListener('mouseover', () => {
-//     body.style.backgroundImage = "url('/FrontEnd/img/img3.jpg')";
-//     fNombre.style.color = 'var(--col-white)';
-//     fInfo.style.color = 'var(--col-white)';
-//     infoExtra.style.color = 'var(--col-white)';
-//     fraseHomenaje.style.color = 'var(--col-white)';
-// })
-// estilo4.addEventListener('mouseover', () => {
-//     body.style.backgroundImage = "url('/FrontEnd/img/img4.jpg')";
-//     fNombre.style.color = 'var(--col-white)';
-//     fInfo.style.color = 'var(--col-white)';
-//     infoExtra.style.color = 'var(--col-white)';
-//     fraseHomenaje.style.color = 'var(--col-white)';
-// })
-// estilo5.addEventListener('mouseover', () => {
-//     body.style.backgroundImage = "url('/FrontEnd/img/img5.jpg')";
-//     fNombre.style.color = 'var(--col-white)';
-//     fInfo.style.color = 'var(--col-white)';
-//     infoExtra.style.color = 'var(--col-white)';
-//     fraseHomenaje.style.color = 'var(--col-white)';
-// })
+
+

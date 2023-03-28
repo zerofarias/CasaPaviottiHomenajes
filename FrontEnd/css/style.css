@@ -15,7 +15,7 @@ body {
 }
 
 :root {
-  --sm: 1em;
+  --sm: .8em;
   --md: 1.8em;
   --lg: 2.3em;
 
@@ -68,7 +68,7 @@ body {
   margin-top: 1rem;
   color: var(--col-black);
   font-weight: bold;
-  font-size: var(--lg);
+  font-size: var(--md);
   text-shadow: 2px 2px 5px var(--col-grey);
 }
 
@@ -76,7 +76,7 @@ body {
   margin-top: 1rem;
   color: var(--col-black);
   font-weight: bold;
-  font-size: 1.8em;
+  font-size: 1em;
   text-shadow: 2px 2px 5px var(--col-grey);
 }
 
