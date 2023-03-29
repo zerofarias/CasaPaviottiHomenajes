@@ -26,7 +26,7 @@ function ValidarHash($hash,$cod){
 }
 
 $hash = $_GET['condolencia'];
-$cod = substr($_GET['hash'],0,-2);
+$cod = substr($_GET['condolencia'],0,-2);
 $apellido =  ValidarHash($hash,$cod);
 ?>
 

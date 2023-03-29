@@ -15,7 +15,7 @@ $(document).ready(function () {
                 escribirHTML(inhumados,num)
                 
               }    
-          },9000);
+          },12000);
           ///3Min Son 180000
           
           escribirHTML(inhumados,0)
@@ -66,6 +66,7 @@ $(document).ready(function () {
         data: {opcion:2},
         success: function (data) {
               cargarDato(data)
+              console.warn('llama ajax');
         },
         error: function () {
           
@@ -73,10 +74,13 @@ $(document).ready(function () {
       });
     }
 
+
+
+    /////////////////Funcion que Genera El codigo QR (recibe el ID del Inhumado)
     function generarQR(id) {
         const contenedorQR = document.getElementById('contenedorQR');
         contenedorQR.innerHTML= '';
-        const QR = new QRCode(contenedorQR,'https://paviotti.com.ar/CasaPaviottiTV/envio-condolencias/index.php?condolencia='+id);
+        const QR = new QRCode(contenedorQR,'https://paviotti.com.ar/CasaPaviottiHomenajes/envio-condolencias/index.php?condolencia='+id);
     }
 
     
@@ -101,7 +105,7 @@ $(document).ready(function () {
 //  });
 //}
 
-
-    ajax();
+    setInterval(ajax,600000);////Llamo Ajax Cada 10 Min
+    ajax();////LLamo a Ajax por Primera Vez
 
 });
