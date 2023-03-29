@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+//////////////////// RECIBE los datos del ajax en JSON e incrementa +1 el num del inhumado
     function cargarDato(data){
         var inhumados = data;
         let num =  0;
@@ -15,13 +16,13 @@ $(document).ready(function () {
                 escribirHTML(inhumados,num)
                 
               }    
-          },12000);
+          },180000);
           ///3Min Son 180000
           
           escribirHTML(inhumados,0)
     }
 
-
+//////////////// escribe HTML es la funcion que captura el HTML e incrusta los datos del JSON (obtenidos de la base de datos)
     function escribirHTML(data,num){
 
         let dato = JSON.parse(data);
@@ -57,7 +58,7 @@ $(document).ready(function () {
 
     }
   
-
+///////////// AJAX que consulta los ultimo Inhumados envia la Opcion 1///////////
     function ajax() {
       $.ajax({
         url: "../../../CasaPaviottiHomenajes/back/logic/datos.php",
@@ -74,8 +75,6 @@ $(document).ready(function () {
       });
     }
 
-
-
     /////////////////Funcion que Genera El codigo QR (recibe el ID del Inhumado)
     function generarQR(id) {
         const contenedorQR = document.getElementById('contenedorQR');
@@ -83,15 +82,12 @@ $(document).ready(function () {
         const QR = new QRCode(contenedorQR,'https://paviotti.com.ar/CasaPaviottiHomenajes/envio-condolencias/index.php?condolencia='+id);
     }
 
-    
-
     ///function cargarMsj(data,codigoExtinto) {
     ///      let fallecido = JSON.parse(data);   
     ///      const infoExtra = document.querySelector("[data-mjsQR]");
     ///      infoExtra.innerHTML = fallecido[0].mensaje;
     ///}
 
-        
 //function condolencias(codigoExtinto) {
 //  $.ajax({
 //    url: "../../../CasaPaviottiHomenajes-main/back/logic/datos.php",
