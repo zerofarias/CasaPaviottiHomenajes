@@ -28,8 +28,11 @@ $(document).ready(function () {
     function escribirHTML(data, num) {
       let dato = JSON.parse(data);
 
-      const fImagen = document.querySelector("[data-imgFallecido]");
-      $("#fimagen").attr("src", "../autogestion/images/" + dato[num].foto);
+      if (dato[num].foto != null) {
+        const fImagen = document.querySelector("[data-imgFallecido]");
+        $("#fimagen").attr("src", "../autogestion/images/" + dato[num].foto);
+      }
+      
 
       const fNombre = document.querySelector("[data-nombreFallecido]");
       fNombre.innerHTML = dato[num].apellido;
@@ -70,7 +73,7 @@ $(document).ready(function () {
         for (let num = 0; num < 3; num++) {
             $("#sala"+num).html(dato[num].apellido);
             if (dato[num].foto != null) {
-                $("#img"+num).attr("src", "../autogestion/images/" + dato[num].foto);
+              $("#img"+num).attr("src", "../autogestion/images/" + dato[num].foto);
             }
             $(".salaVelatoria"+num).html(dato[num].sala);
         }
@@ -104,6 +107,7 @@ $(document).ready(function () {
     const QR = new QRCode(contenedorQR,'https://paviotti.com.ar/CasaPaviottiHomenajes/envio-condolencias/index.php?condolencia='+id);
     }
 
+
     ///function cargarMsj(data,codigoExtinto) {
     ///      let fallecido = JSON.parse(data);
     ///      const infoExtra = document.querySelector("[data-mjsQR]");
@@ -125,6 +129,6 @@ $(document).ready(function () {
 
     setInterval(ajax, 600000); ////Llamo Ajax Cada 10 Min
     ajax(); ////LLamo a Ajax por Primera Vez
-
+    
   
 }); ///FIN JQUERY
