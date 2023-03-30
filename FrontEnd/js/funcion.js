@@ -17,7 +17,7 @@ $(document).ready(function () {
           escribirHTML(inhumados, num);
           cambiarPantalla(inhumados)
         }
-      }, 60000);
+      }, 6000);
       ///3Min Son 180000
 
       escribirHTML(inhumados, 0);
