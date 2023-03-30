@@ -69,7 +69,9 @@ $(document).ready(function () {
 
         for (let num = 0; num < 3; num++) {
             $("#sala"+num).html(dato[num].apellido);
-            $("#img"+num).attr("src", "../autogestion/images/" + dato[num].foto);
+            if (dato[num].foto != null) {
+                $("#img"+num).attr("src", "../autogestion/images/" + dato[num].foto);
+            }
             $(".salaVelatoria"+num).html(dato[num].sala);
         }
         setTimeout(()=> {
