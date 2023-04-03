@@ -7,6 +7,7 @@ $conexion = $objeto->Conectar();
 //date_default_timezone_set('America/Argentina/Cordoba'); 
 //$fechaNow = date("Y-m-d H:i:s");
 $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
+$codigo = (isset($_POST['codigo'])) ? $_POST['codigo'] : '';
 
 
 switch($opcion){
@@ -36,6 +37,12 @@ switch($opcion){
         break;
     case 4:
         $consulta ="";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute();        
+        $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
+        break;
+    case 5:
+        $consulta ="SELECT * FROM condolencias where COD_EXTINTO = '$codigo' ";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();        
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);

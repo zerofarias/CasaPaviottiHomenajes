@@ -42,7 +42,7 @@ $(document).ready(function () {
 
       const fInhumacion = document.querySelector("[data-cementerio]");
       fInhumacion.innerHTML =
-        "<b>INUMACHON </b>" + `<b>${dato[num].cementerio}</b>`;
+        "<b>INUMACION </b>" + `<b>${dato[num].cementerio}</b>`;
 
       const fInhuFechaHora = document.querySelector("[data-inhumacionFH]");
       fInhuFechaHora.innerHTML =
