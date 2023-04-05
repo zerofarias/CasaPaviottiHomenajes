@@ -140,9 +140,25 @@ $(document).ready(function () {
         url: "../../../CasaPaviottiHomenajes/back/logic/datos.php",
         type: "POST",
         datatype: "json",
-        data: { opcion: 5, codigo:codigoExtinto },
-        success: function (condolencias) {
-            console.log(condolencias);
+        data: { opcion: 4, codigo:codigoExtinto },
+        success: function (cantCondolencias) {
+          let cantidad = JSON.parse(cantCondolencias);
+          let NumComentarios = cantidad[0].CANTCOMENTARIO;
+          if (NumComentarios > 0) {
+                $.ajax({
+                  url: "../../../CasaPaviottiHomenajes/back/logic/datos.php",
+                  type: "POST",
+                  datatype: "json",
+                  data: { opcion: 5, codigo:codigoExtinto },
+                  success: function (comentarios) {
+                      console.log(comentarios);
+                  }
+                })
+
+          }else{
+            //// si NO HAY COMENTARIO 
+            console.log('NO HAY COMENTARIOS');
+          }
             //////////// LA VARIABLE condolencias TIENE LOS COMENTARIOS DE CADA INHUMADOS
         }
       })
@@ -155,7 +171,7 @@ $(document).ready(function () {
     const QR = new QRCode(contenedorQR,'https://paviotti.com.ar/CasaPaviottiHomenajes/envio-condolencias/index.php?condolencia='+id);
     }
 
-    
+
     setInterval(ajax, 600000); ////Llamo Ajax Cada 10 Min
     ajax(); ////LLamo a Ajax por Primera Vez
     

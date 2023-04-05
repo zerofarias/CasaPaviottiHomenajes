@@ -41,7 +41,7 @@ switch($opcion){
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
         break;
     case 4:
-        $consulta ="";
+        $consulta ="SELECT COUNT(COD_EXTINTO) AS CANTCOMENTARIO FROM `condolencias` WHERE COD_EXTINTO  = '$codigo' ";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();        
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
