@@ -29,8 +29,13 @@ switch($opcion){
         $resultado->execute();        
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
         break;
-    case 3:
-        $consulta ="";
+    case 3:///////////CUENTA CANTIDAD DE INHUMADOS ACTIVOS
+        $consulta ="SELECT COUNT(COD_EXTINTO) AS CONTEO   FROM extintos
+                    WHERE  (sala LIKE 'Sala DALI%' or sala='Sala VAN GOGH'   or sala='Sala PICASSO') AND
+                                curdate() BETWEEN STR_TO_DATE(substring(REPLACE(fechafal,'/',','), locate(' ', fechafal))  ,'%d,%m,%Y') 
+                    AND 
+                                STR_TO_DATE(substring(REPLACE(fechasep,'/',','), locate(' ', fechasep))  ,'%d,%m,%Y')	
+                    ORDER BY COD_EXTINTO";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();        
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
@@ -42,7 +47,7 @@ switch($opcion){
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
         break;
     case 5:
-        $consulta ="SELECT * FROM condolencias where COD_EXTINTO = '$codigo' ";
+        $consulta ="SELECT * FROM `condolencias` WHERE `COD_EXTINTO` = '$codigo' ";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();        
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
