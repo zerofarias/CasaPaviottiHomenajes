@@ -15,7 +15,6 @@ $(document).ready(function () {
           console.warn(num);
         } else {
           num = 0;
-          console.warn("vuelve a " + num);
           escribirHTML(inhumados, num);
           cambiarPantalla(inhumados,cantidadServicios)
         }
@@ -151,8 +150,16 @@ $(document).ready(function () {
                   datatype: "json",
                   data: { opcion: 5, codigo:codigoExtinto },
                   success: function (comentarios) {
-                      console.log(comentarios);
+                    let msjCondolencias = JSON.parse(comentarios);
+                     // console.warn(msjCondolencias[1].mensaje);
+
+////////////////de aca ára abajo ////////////////////////////////////
+
+
+
+                      $("#comentario").html('<b>'+msjCondolencias[1].apellido+' '+msjCondolencias[1].nombre+'</b> <br>' +  msjCondolencias[1].mensaje);
                   }
+                  
                 })
 
           }else{
@@ -171,9 +178,7 @@ $(document).ready(function () {
     const QR = new QRCode(contenedorQR,'https://paviotti.com.ar/CasaPaviottiHomenajes/envio-condolencias/index.php?condolencia='+id);
     }
 
-
     setInterval(ajax, 600000); ////Llamo Ajax Cada 10 Min
     ajax(); ////LLamo a Ajax por Primera Vez
-    
   
 }); ///FIN JQUERY
