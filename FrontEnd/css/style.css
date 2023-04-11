@@ -120,17 +120,54 @@ hr {
   margin-bottom: 2rem;
 }
 
+.contenedor__mensajes {
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* MOSTRANDO MENSAJES */
+.contenedor__contenedor--frase {
+  overflow: hidden;
+  height: auto;
+  width: 100%;
+}
+
+/* .contenedor__mensajes {
+  animation-duration: 30s;
+  animation-name: slidein;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease;
+}
+
+@keyframes slidein {
+  from {
+    margin-top: 100%;
+  }
+  to {
+    margin-top: calc(-170%);
+  }
+} */
+/* MOSTRANDO MSJ FIN */
+
 .infoExtra {
-  display: inline;
-  margin-bottom: 2rem;
-  width: 60%;
+  text-align: start;
+  margin-bottom: 3rem;
+  margin-left: 0.5rem;
+  width: 85%;
   padding: .7rem;
   border-radius: 15px;
   background: #e1dcdc;
   box-shadow:  19px 19px 28px #807d7d, -9px -9px 28px #ffffff;
 }
 
-.contanedor__infoExtra {
+.infoUsuarioCondolencia {
+  font-size: .8em;
+  display: flex;
+  margin-top: -1em;
+}
+
+.contenedor__infoExtra {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
