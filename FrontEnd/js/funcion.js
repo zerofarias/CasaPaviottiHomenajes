@@ -34,28 +34,37 @@ $(document).ready(function () {
         const fNombre = document.querySelector("[data-nombreFallecido]");
         fNombre.innerHTML = dato[num].apellido;
 
+        let iconoReligion = document.querySelector('#religionIcon');
+        
+        let cristianismo = "✝";
+        let Judaismo = "✡";
+        let Hinduismo = "ॐ";
+        let Islam = "☪";
+        let Budismo = "☸";
+        let Taoismo = "☯";
+
         switch (dato[num].religion) {
-          case 1:
-            ////✝
+          case '1':
+            iconoReligion.innerHTML = cristianismo;
             break;
-          case 2:
-              //✡ 
+          case '2':
+            iconoReligion.innerHTML = Judaismo;
               break;
-          case 3:
-            //ॐ
+          case '3':
+            iconoReligion.innerHTML = Hinduismo;
               break;
-          case 4:
-            //☪
+          case '4':
+            iconoReligion.innerHTML = Islam;
               break;
-          case 5:
-            //☸
+          case '5':
+            iconoReligion.innerHTML = Budismo;
               break;
-          case 6:
-            //☯
+          case '6':
+            iconoReligion.innerHTML = Taoismo;
               break;
           
           default:
-            ////borra el circulo
+            iconoReligion.classList.add('inactive');
               break;
         }
 
@@ -180,6 +189,11 @@ $(document).ready(function () {
             let msjCondolencias = JSON.parse(condolencia); 
             for (let i = 0; i < NumComentarios; i++){
                     comentario.innerHTML += `<p class="infoExtra"><strong>${msjCondolencias[i].mensaje} </strong><br> ${msjCondolencias[i].nombre} ${msjCondolencias[i].apellido}</p>`;
+
+                    //COLOCAR MSJ AL AZAR
+                    // let c = Math.floor(Math.random()*comentario.length);
+                    // document.getElementById("contenedor__mensajes").innerHTML += `<p>${comentario[c].mensaje}</p>` + `<p>${comentario[c].mensaje}</p>` + `<p>${comentario[c].mensaje}</p>`;
+
             }
       }
 
@@ -189,6 +203,24 @@ $(document).ready(function () {
           contenedorQR.innerHTML= '';
           const QR = new QRCode(contenedorQR,'https://paviotti.com.ar/CasaPaviottiHomenajes/envio-condolencias/index.php?condolencia='+id);
       }
+
+          //////////// RECARGAR PAGINA
+      //    fullscreen.addEventListener('click', () => {
+      //      window.location.reload();
+      //  })
+////////// funcion  full screen
+
+      //let botonFullScreen =  document.getElementById('fullCreen');
+
+      //botonFullScreen.click()
+      
+        document.addEventListener("dblclick", ()=> {
+          document.documentElement.requestFullscreen().catch((e) => {
+                console.log(e);
+              })
+        })
+    
+
 
       
   

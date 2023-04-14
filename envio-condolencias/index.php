@@ -11,7 +11,6 @@ function ValidarHash($hash,$cod){
         $resultado->execute();
         $row = $resultado->fetch();
                   if (strlen($row["apellido"]) !== 0){
-                        //header('Location: https://paviotti.com.ar/');
                         return $row["apellido"];
                     }else{
                       header('Location: https://paviotti.com.ar/');
