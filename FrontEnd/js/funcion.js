@@ -5,6 +5,18 @@ $(document).ready(function () {
         var inhumados = data;
         let num = 0;
         var cantidadServicios = canServicios;
+let json = [
+                {
+                    "COD_EXTINTO": "1073758435",
+                },
+                {
+                    "COD_EXTINTO": "1073758435",
+                }
+            ];
+
+            localStorage.setItem("inhumados", JSON.stringify(json))
+            let codinhu = JSON.parse(localStorage.getItem("inhumados"))
+            console.log(codinhu);
   
         setInterval(() => {
           num = num + 1;
@@ -136,6 +148,7 @@ $(document).ready(function () {
                     data: { opcion: 1 },
                     success: function (data) {
                       cargarDato(data,cantServicio);
+                      
                     },
                     error: function () {
                         return null;
@@ -183,17 +196,17 @@ $(document).ready(function () {
       }
 
       ////////////// ESCRIBE LAS CONDOLENCIAS EN LA PANTALLA ///////////////
+
+
+
+    //  console.log(localStorage.getItem("precios"));
       function mostrarCondolencia(condolencia , NumComentarios){
             let comentario = document.querySelector('[data-comentario]');
             comentario.innerHTML = '';
-            let msjCondolencias = JSON.parse(condolencia); 
+            let msjCondolencias = JSON.parse(condolencia);
+
             for (let i = 0; i < NumComentarios; i++){
                     comentario.innerHTML += `<p class="infoExtra"><strong>${msjCondolencias[i].mensaje} </strong><br> ${msjCondolencias[i].nombre} ${msjCondolencias[i].apellido}</p>`;
-
-                    //COLOCAR MSJ AL AZAR
-                    // let c = Math.floor(Math.random()*comentario.length);
-                    // document.getElementById("contenedor__mensajes").innerHTML += `<p>${comentario[c].mensaje}</p>` + `<p>${comentario[c].mensaje}</p>` + `<p>${comentario[c].mensaje}</p>`;
-
             }
       }
 
