@@ -1,22 +1,14 @@
 $(document).ready(function () {
 
+  var tiempoInhumados = 30000;
+  var tiempoMsjs = 9000;
+  var duracionSalas = 15000;
+
   /////////////////// RECIBE JSON de AJAX y LLAMA A FUNCION CAMBIO PANTALLA Y ESCRIBIR HTML////////////////////////
       function cargarDato(data,canServicios) {
         var inhumados = data;
         let num = 0;
         var cantidadServicios = canServicios;
-let json = [
-                {
-                    "COD_EXTINTO": "1073758435",
-                },
-                {
-                    "COD_EXTINTO": "1073758435",
-                }
-            ];
-
-            localStorage.setItem("inhumados", JSON.stringify(json))
-            let codinhu = JSON.parse(localStorage.getItem("inhumados"))
-            console.log(codinhu);
   
         setInterval(() => {
           num = num + 1;
@@ -28,7 +20,7 @@ let json = [
               escribirHTML(inhumados, num);
               cambiarPantalla(inhumados,cantidadServicios)
           }
-        }, 180000);
+        }, tiempoInhumados);
         ///3Min Son 180000
   
         escribirHTML(inhumados, 0);
@@ -99,11 +91,42 @@ let json = [
         const fraseHomenaje = document.querySelector("#fraseHomenaje");
         const body = document.querySelector("body");
 
-        let codigoExtinto = dato[num].COD_EXTINTO;
-          ajaxCondolencias(codigoExtinto);
+        let codigoExtinto1 = dato[num].COD_EXTINTO;
+        sessionStorage.setItem('inhumadoEnPantalla',codigoExtinto1);
+          ajaxCondolencias(codigoExtinto1);
   
-        generarQR(codigoExtinto + "99"); //// LLAMO A LA FUNCION QUE GENERA QR
+        generarQR(codigoExtinto1 + "99"); //// LLAMO A LA FUNCION QUE GENERA QR
       }
+
+      //  console.log(localStorage.getItem("precios"));
+      function mostrarCondolencia(condolencia , totalComentarios){
+        let comentario = document.querySelector('[data-comentario]');
+        comentario.innerHTML = '';
+        let msjCondolencias = JSON.parse(condolencia);
+        var inhumadoEnPantalla = sessionStorage.getItem('inhumadoEnPantalla');
+        let numShow = sessionStorage.getItem(inhumadoEnPantalla);
+        if (numShow == null || numShow == undefined) {
+          //alert('no esta definida')
+          let Seteo = sessionStorage.setItem(inhumadoEnPantalla,0);
+          let numShow = sessionStorage.getItem(inhumadoEnPantalla);
+          console.log(numShow);
+        }
+        
+        let numStop = parseInt(numShow)+3;
+          for (numShow; numShow < numStop; numShow++){
+            if (numShow < totalComentarios) {
+              console.log(numShow);
+              //console.log(numStop);
+                    comentario.innerHTML += `<p class="infoExtra"><strong>${msjCondolencias[numShow].mensaje} </strong><br> ${msjCondolencias[numShow].nombre} ${msjCondolencias[numShow].apellido}</p>`
+                    sessionStorage.setItem(inhumadoEnPantalla,numShow);
+                   // console.log(inhumadoEnPantalla);
+
+                    }else{
+                      sessionStorage.setItem(inhumadoEnPantalla,0);
+                      console.log('hice el res');
+                    }
+                }
+        }
   
     //////cambiar entre un pantalla y otra
       function cambiarPantalla(inhumados,canServicios) {
@@ -127,7 +150,7 @@ let json = [
           setTimeout(()=> {
               $("#screen1").hide();
               $("#screen0").show();
-          },10000)
+          },duracionSalas)
       }
     ///////////// CONSULTA BASE DE DATOS DE PAVIOTTI/////////////////
   
@@ -199,16 +222,7 @@ let json = [
 
 
 
-    //  console.log(localStorage.getItem("precios"));
-      function mostrarCondolencia(condolencia , NumComentarios){
-            let comentario = document.querySelector('[data-comentario]');
-            comentario.innerHTML = '';
-            let msjCondolencias = JSON.parse(condolencia);
-
-            for (let i = 0; i < NumComentarios; i++){
-                    comentario.innerHTML += `<p class="infoExtra"><strong>${msjCondolencias[i].mensaje} </strong><br> ${msjCondolencias[i].nombre} ${msjCondolencias[i].apellido}</p>`;
-            }
-      }
+    
 
     /////////////////Funcion que Genera El codigo QR (recibe el ID del Inhumado)
       function generarQR(id) {
